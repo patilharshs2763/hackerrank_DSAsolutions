@@ -53,15 +53,18 @@ The final linked list is: .
 
 SinglyLinkedListNode* removeDuplicates(SinglyLinkedListNode* llist) {
     SinglyLinkedListNode* curr=llist;
-    SinglyLinkedListNode* temp;
+    
     if(llist==NULL){
         return llist;
     }
     while(curr->next!=NULL){
         if(curr->data==curr->next->data){
-            temp=curr->next->next;
-            curr->next->next=NULL;
-            curr->next=temp;
+            SinglyLinkedListNode* temp=curr->next;
+            curr->next=curr->next->next;
+            delete temp;
+            // temp=curr->next->next;
+            // curr->next->next=NULL;
+            // curr->next=temp;
             
         }else{
             curr=curr->next;
